@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="小和的个人作品集 —— AI 辅助开发与大语言模型应用方向的项目展示">
+  <title>小和 · 个人作品集</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23191712'/%3E%3Ctext x='16' y='22' font-size='16' font-family='Georgia,serif' fill='%23ff6a3d' text-anchor='middle'%3E和%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ==================== 左侧 / 移动端顶部：个人介绍 + 技能 + 导航 ==================== -->
+  <aside class="sidebar">
+
+    <header class="profile">
+      <!-- 头像占位：如需真实头像，可替换为 <img class="avatar" src="头像地址" alt="小和的头像"> -->
+      <div class="avatar-mono" aria-hidden="true">和</div>
+      <h1 class="name">小和</h1>
+      <p class="identity">AI 辅助开发 · 大语言模型应用</p>
+      <p class="identity-sub">软件工程 · 广州软件学院在读</p>
+      <p class="bio">软件工程专业学生，主要关注 AI 辅助开发与大语言模型技术；平时使用 Python、Java 和 TypeScript 做项目，也在持续学习前后端开发、数据可视化和 AI 应用构建。</p>
+    </header>
+
+    <section class="skills" aria-label="技能方向">
+      <h2 class="side-title">技能方向</h2>
+      <ul class="skill-lines">
+        <li>Python</li>
+        <li>Java</li>
+        <li>TypeScript</li>
+        <li>HTML / CSS</li>
+      </ul>
+      <p class="skill-note">持续学习中：前后端开发 · 数据可视化 · AI 应用构建</p>
+    </section>
+
+    <nav class="side-nav" aria-label="页面导航">
+      <a href="#works" class="nav-link active"><span>01</span>作品<em>Works</em></a>
+      <a href="#about" class="nav-link"><span>02</span>关于<em>About</em></a>
+      <a href="#contact" class="nav-link"><span>03</span>联系<em>Contact</em></a>
+    </nav>
+
+    <footer class="side-foot">
+      <a class="side-mail" href="mailto:xiaohe@example.com">xiaohe@example.com</a>
+      <div class="side-links">
+        <a href="https://github.com/xiaohe-dev" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://xiaohe.dev" target="_blank" rel="noopener">个人主页 ↗</a>
+      </div>
+      <p>© 2026 小和</p>
+    </footer>
+
+  </aside>
+
+  <!-- ==================== 右侧主内容 ==================== -->
+  <main class="main">
+
+    <!-- 01 作品 -->
+    <section id="works" class="section works">
+      <header class="sec-head reveal">
+        <p class="sec-no">01</p>
+        <h2 class="sec-title">精选作品</h2>
+        <p class="sec-sub">Selected Works · 项目按完成时间排列，持续更新中。</p>
+      </header>
+
+      <div class="filter-bar reveal" id="filterBar">
+        <div class="filters" id="filters"><!-- 分类筛选按钮由 JS 生成 --></div>
+        <span class="filter-count" id="filterCount"></span>
+      </div>
+
+      <div class="project-list" id="projectList"><!-- 项目由 JS 渲染 --></div>
+
+      <noscript><p class="noscript-tip">请启用 JavaScript 以查看项目列表。</p></noscript>
+    </section>
+
+    <!-- 02 关于 -->
+    <section id="about" class="section about">
+      <header class="sec-head reveal">
+        <p class="sec-no">02</p>
+        <h2 class="sec-title">关于我</h2>
+        <p class="sec-sub">About Me · 软件工程在读 · 中国·广州</p>
+      </header>
+
+      <div class="about-grid">
+        <div class="about-lead reveal">
+          <p class="lead">主要关注<br>AI 辅助开发与<br>大语言模型技术。</p>
+        </div>
+        <div class="about-text reveal">
+          <p>我是小和，软件工程专业，目前就读于广州软件学院，坐标中国·广州。</p>
+          <p>平时主要使用 Python、Java 和 TypeScript 进行项目开发，也在持续学习前后端开发、数据可视化和 AI 应用构建。</p>
+          <p>项目细节欢迎在「作品」区域查看，交流合作可通过页面下方的联系方式联系我。</p>
+        </div>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat"><strong>4<i>个</i></strong><span>项目作品</span></div>
+        <div class="stat"><strong>300<i>+</i></strong><span>拾光集市注册用户</span></div>
+        <div class="stat"><strong>15<i>+</i></strong><span>实践过的技术栈</span></div>
+      </div>
+    </section>
+
+    <!-- 03 联系 -->
+    <section id="contact" class="section contact">
+      <header class="sec-head reveal">
+        <p class="sec-no">03</p>
+        <h2 class="sec-title">联系方式</h2>
+        <p class="sec-sub">Contact · 欢迎通过以下方式与我联系。</p>
+      </header>
+
+      <div class="contact-inner reveal">
+        <a class="big-mail" href="mailto:xiaohe@example.com">xiaohe@example.com</a>
+
+        <ul class="contact-list">
+          <li><span class="c-label">GitHub</span><a href="https://github.com/xiaohe-dev" target="_blank" rel="noopener">github.com/xiaohe-dev ↗</a></li>
+          <li><span class="c-label">个人主页</span><a href="https://xiaohe.dev" target="_blank" rel="noopener">xiaohe.dev ↗</a></li>
+          <li><span class="c-label">微信</span><p>xiaohezi</p></li>
+          <li><span class="c-label">所在地</span><p>中国·广州</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="main-foot">
+      <p>© 2026 小和 · 本页面由原生 HTML / CSS / JavaScript 手工构建，无任何框架。</p>
+    </footer>
+
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
