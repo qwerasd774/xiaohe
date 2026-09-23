@@ -177,9 +177,43 @@ function initReveal() {
   els.forEach(el => io.observe(el));
 }
 
+/* ==================== 深浅色主题切换 ==================== */
+
+const THEME_KEY = "portfolio-theme";
+
+// 页面渲染前先应用已保存的主题，避免刷新时闪烁
+(function applySavedTheme() {
+  let saved = "";
+  try { saved = localStorage.getItem(THEME_KEY) || ""; } catch (_) { /* 存储不可用时忽略 */ }
+  document.documentElement.setAttribute(
+    "data-theme",
+    saved === "dark" || saved === "light" ? saved : "light"
+  );
+})();
+
+function initThemeToggle() {
+  const root = document.documentElement;
+  const btn = $("#themeToggle");
+  if (!btn) return;
+
+  const syncBtn = () => {
+    const dark = root.getAttribute("data-theme") === "dark";
+    btn.setAttribute("aria-label", dark ? "切换为浅色主题" : "切换为深色主题");
+  };
+  syncBtn();
+
+  btn.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (_) { /* 存储不可用时忽略 */ }
+    syncBtn();
+  });
+}
+
 /* ==================== 初始化 ==================== */
 
 document.addEventListener("DOMContentLoaded", () => {
+  initThemeToggle();
   renderProjects();
   renderFilters();
   bindProjectEvents();

@@ -4,6 +4,7 @@
    ============================================================ */
 
 :root {
+  color-scheme: light;
   --bg: #f6f2ea;            /* 主内容米色底 */
   --panel: #fffdf8;
   --ink: #1c1a15;           /* 主文字 */
@@ -11,6 +12,12 @@
   --line: #e2dbc9;          /* 分割线 */
   --accent: #e2532b;        /* 朱红强调色 */
   --accent-soft: #f9e5dc;
+
+  /* 主题相关杂项（深色模式在 html[data-theme="dark"] 中覆盖） */
+  --dot: #e7e0cf;           /* 背景点阵颜色 */
+  --no-stroke: #d9d1bb;     /* 大号区块编号描边 */
+  --tech-ink: #b23a17;      /* 技术标签文字颜色 */
+  --ph-grad: linear-gradient(135deg, #ece5d4, #f8f4ea);  /* 图片加载占位 */
 
   /* 左侧深色栏配色 */
   --side-bg: #191712;
@@ -26,6 +33,25 @@
   --side-w: 344px;
 }
 
+/* ==================== 深色主题 ==================== */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #1e1b15;
+  --panel: #26221b;
+  --ink: #ece5d4;
+  --ink-2: #a89f8a;
+  --line: #3a352a;
+  --accent: #ff6a3d;
+  --accent-soft: #38251c;
+
+  --dot: #262218;
+  --no-stroke: #4a4436;
+  --tech-ink: #ff8a5f;
+  --ph-grad: linear-gradient(135deg, #262219, #302a1f);
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -37,8 +63,10 @@ body {
   color: var(--ink);
   background-color: var(--bg);
   /* 极淡的点阵纹理，增加质感 */
-  background-image: radial-gradient(#e7e0cf 1px, transparent 1px);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
   background-size: 26px 26px;
+  /* 主题切换时背景与文字颜色平滑过渡 */
+  transition: background-color .3s ease, color .3s ease;
 }
 
 img { display: block; max-width: 100%; }
@@ -197,6 +225,46 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-link.active span { color: var(--side-accent); }
 
+/* 主题切换按钮 */
+.theme-toggle {
+  justify-self: end;
+  align-self: center;
+  width: 36px;
+  height: 36px;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--side-line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--side-mute);
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.theme-toggle:hover {
+  color: var(--side-ink);
+  border-color: var(--side-accent);
+  background: rgba(255, 255, 255, .05);
+}
+.theme-toggle svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* 深色模式下侧栏与主内容同为深色，补一条分割线保持分区 */
+@media (min-width: 921px) {
+  html[data-theme="dark"] .sidebar { border-right: 1px solid var(--side-line); }
+}
+
 /* 侧栏底部 */
 .side-foot {
   margin-top: auto;
@@ -255,7 +323,7 @@ a { color: inherit; text-decoration: none; }
 @supports (-webkit-text-stroke: 1px black) {
   .sec-no {
     color: transparent;
-    -webkit-text-stroke: 1.5px #d9d1bb;
+    -webkit-text-stroke: 1.5px var(--no-stroke);
   }
 }
 
@@ -347,7 +415,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  background: linear-gradient(135deg, #ece5d4, #f8f4ea);  /* 图片加载前的占位 */
+  background: var(--ph-grad);  /* 图片加载前的占位 */
   border: 1px solid var(--line);
   box-shadow: 0 18px 40px -22px rgba(28, 26, 21, .35);
 }
@@ -428,7 +496,7 @@ a { color: inherit; text-decoration: none; }
   padding: 4px 11px;
   border-radius: 6px;
   background: var(--accent-soft);
-  color: #b23a17;
+  color: var(--tech-ink);
 }
 
 .p-more {
@@ -610,6 +678,14 @@ a { color: inherit; text-decoration: none; }
   .nav-link em { display: none; }
   .nav-link span { display: none; }
   .nav-link.active { border-left: none; }
+
+  .theme-toggle {
+    flex: 0 0 auto;
+    margin: 0 0 0 6px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
 
   .side-foot { margin-top: 0; padding-bottom: 6px; }
 
